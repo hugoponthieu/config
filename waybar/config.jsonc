@@ -1,0 +1,76 @@
+{
+  "layer": "top",
+  "modules-left": ["network", "cpu", "memory", "tray"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["backlight", "pulseaudio", "clock", "custom/date", "battery"],
+
+  "pulseaudio": {
+    "tooltip": false,
+    "scroll-step": 5,
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟  Muted",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format-icons": {
+      "default": ["", "", ""]
+    }
+  },
+
+  "network": {
+    "interface": ["wlan0", "eth*"],
+    "format-wifi": "  {essid}",
+    "format-ethernet": " Ethernet",
+    "format-disconnected": "⚠ Disconnected",
+    "on-click": "nm-connection-editor",
+    "tooltip": false
+  },
+
+  "backlight": {
+    "tooltip": false,
+    "format": " {}%",
+    "interval": 1,
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+
+  "clock": {
+    "tooltip": false,
+    "format": "  {:%H:%M}",
+    "interval": 60
+  },
+
+  "custom/date": {
+    "exec": "date +\" %a %d/%m/%Y\"",
+    "interval": 60,
+    "tooltip": false
+  },
+
+  "cpu": {
+    "interval": 15,
+    "format": " {}%",
+    "max-length": 10
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": " {}%",
+    "max-length": 10
+  }
+}

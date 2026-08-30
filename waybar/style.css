@@ -1,108 +1,111 @@
-@import "mocha.css";
-
 * {
-  font-family: "Fantasque Sans Mono", "Symbols Nerd Font", monospace;
-  font-size: 17px;
-  min-height: 0;
+  border: none;
+  border-radius: 0px;
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 14px;
+  min-height: 10px;
 }
 
-#waybar {
+window#waybar {
   background: transparent;
-  color: @text;
-  margin: 5px 5px;
 }
 
-#workspaces {
-  border-radius: 1rem;
-  margin: 5px;
-  background-color: @surface0;
-  margin-left: 1rem;
+window#waybar.hidden {
+  opacity: 0.2;
 }
 
-#workspaces button {
-  color: @lavender;
-  border-radius: 1rem;
-  padding: 0.4rem;
+#window {
+  margin-top: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+  color: transparent;
+  background: transparent;
 }
 
-#workspaces button.active {
-  color: @sky;
-  border-radius: 1rem;
+@keyframes blink {
+  to {
+    background-color: #bf616a;
+    color: #b5e8e0;
+  }
 }
 
-#workspaces button:hover {
-  color: @sapphire;
-  border-radius: 1rem;
-}
-
-#custom-music,
-#tray,
-#backlight,
-#custom-backlight,
+#memory,
+#cpu,
 #clock,
+#custom-date,
+#backlight,
 #battery,
-#custom-battery,
-#pulseaudio,
-#custom-lock,
-#custom-power {
-  background-color: @surface0;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
+#network,
+#pulseaudio {
+  margin-top: 12px;
+  margin-left: 12px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  color: #161320;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-#clock {
-  color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
+#memory:hover,
+#cpu:hover,
+#clock:hover,
+#custom-date:hover,
+#backlight:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover {
+  background: rgba(79, 111, 136, 0.7);
 }
 
 #battery {
-  color: @green;
-}
-
-#battery.charging {
-  color: @green;
-}
-
-#battery.warning:not(.charging) {
-  color: @red;
-}
-
-#backlight, #custom-backlight {
-  color: @yellow;
-}
-
-#battery, #custom-battery {
-  color: @green;
-}
-
-#backlight, #battery {
-    border-radius: 0;
-}
-
-#pulseaudio {
-  color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
-}
-
-#custom-music {
-  color: @mauve;
-  border-radius: 1rem;
-}
-
-#custom-lock {
-    border-radius: 1rem 0px 0px 1rem;
-    color: @lavender;
-}
-
-#custom-power {
-    margin-right: 1rem;
-    border-radius: 0px 1rem 1rem 0px;
-    color: @red;
+  margin-right: 12px;
 }
 
 #tray {
-  margin-right: 1rem;
-  border-radius: 1rem;
+  background: transparent;
+  margin-top: 12px;
+  margin-left: 12px;
+}
+
+#workspaces {
+  margin-top: 12px;
+  margin-left: 12px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  color: #161320;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#workspaces button {
+  padding: 2px 6px;
+  margin: 0 4px;
+  border-radius: 6px;
+  background: transparent;
+  color: #161320;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+#workspaces button.active {
+  background: rgba(255, 255, 255, 0.9);
+  color: #161320;
+}
+
+#workspaces button:hover {
+  background: rgba(79, 111, 136, 0.5);
 }
