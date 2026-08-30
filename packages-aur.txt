@@ -1,0 +1,8 @@
+can-utils
+github-copilot-cli
+libsocketcan2-git
+vagrant
+vial-appimage
+vulkan-caps-viewer-wayland
+yay
+yay-debug
