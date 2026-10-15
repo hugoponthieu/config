@@ -39,13 +39,13 @@ window#waybar.hidden {
 #battery,
 #network,
 #pulseaudio {
-  margin-top: 12px;
+  margin-top: 6px;
   margin-left: 12px;
   margin-bottom: 0px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   border-radius: 8px;
   transition: background-color 0.2s ease;
   color: #161320;
@@ -70,18 +70,18 @@ window#waybar.hidden {
 
 #tray {
   background: transparent;
-  margin-top: 12px;
+  margin-top: 6px;
   margin-left: 12px;
 }
 
 #workspaces {
-  margin-top: 12px;
+  margin-top: 6px;
   margin-left: 12px;
   margin-bottom: 0px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   border-radius: 8px;
   transition: background-color 0.2s ease;
   color: #161320;
@@ -109,3 +109,4 @@ window#waybar.hidden {
 #workspaces button:hover {
   background: rgba(79, 111, 136, 0.5);
 }
+
