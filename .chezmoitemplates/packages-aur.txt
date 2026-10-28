@@ -1,8 +1,7 @@
 can-utils
-github-copilot-cli
-libsocketcan2-git
-vagrant
-vial-appimage
-vulkan-caps-viewer-wayland
+claude-code
+hopper4
+kdash
+libsocketcan-git
+tpack-bin
 yay
-yay-debug

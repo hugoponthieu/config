@@ -69,6 +69,25 @@ Les listes de paquets et les fichiers de greetd sont placés dans
 `.chezmoitemplates` afin qu'ils restent disponibles pour les scripts sans être
 copiés directement dans le dossier personnel.
 
+### Synchroniser les paquets avant une réinstallation
+
+Le manifeste contient tous les paquets installés explicitement sur la machine,
+séparés entre dépôts officiels et AUR/paquets locaux. Pacman réinstalle
+automatiquement leurs dépendances, ce qui reconstitue l'ensemble sans figer
+des dépendances transitoires obsolètes.
+
+Après avoir installé ou supprimé un paquet, mettre le manifeste à jour avec :
+
+```sh
+./update-packages.sh
+git diff -- .chezmoitemplates/packages-*.txt
+```
+
+Le script conserve aussi `chezmoi` dans la liste officielle, car il fait partie
+du mécanisme de restauration même s'il n'était pas encore installé au moment
+de l'inventaire. Les sous-paquets `*-debug` ne sont pas listés séparément : ils
+sont régénérés avec leur paquet AUR source par `makepkg`.
+
 ## Données volontairement exclues
 
 Le dépôt ne doit pas contenir de clés SSH, de jetons, de mots de passe, de

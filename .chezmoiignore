@@ -1,5 +1,6 @@
 README.md
 .gitignore
+update-packages.sh
 .config/kitty/kitty-themes
 .config/wofi/.editorconfig
 .config/wofi/LICENSE
