@@ -1,0 +1,10 @@
+README.md
+.gitignore
+.config/kitty/kitty-themes
+.config/wofi/.editorconfig
+.config/wofi/LICENSE
+.config/wofi/README.md
+.config/wofi/assets
+.config/wofi/src/latte
+.config/wofi/src/macchiato
+.config/wofi/src/mocha

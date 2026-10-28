@@ -11,6 +11,7 @@ bluez
 bluez-utils
 brightnessctl
 btop
+chezmoi
 chromium
 clang
 containerd

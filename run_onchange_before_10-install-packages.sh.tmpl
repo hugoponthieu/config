@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# packages-repo: {{ include ".chezmoitemplates/packages-repo.txt" | sha256sum }}
+# packages-aur: {{ include ".chezmoitemplates/packages-aur.txt" | sha256sum }}
+
+set -eu
+
+if [ ! -f /etc/arch-release ]; then
+  echo "Ce dépôt ne sait installer automatiquement les paquets que sous Arch Linux." >&2
+  exit 1
+fi
+
+source_dir={{ .chezmoi.sourceDir | quote }}
+repo_packages="$source_dir/.chezmoitemplates/packages-repo.txt"
+aur_packages="$source_dir/.chezmoitemplates/packages-aur.txt"
+
+if [ -s "$repo_packages" ]; then
+  xargs -r sudo pacman -S --needed --noconfirm -- < "$repo_packages"
+fi
+
+if [ ! -s "$aur_packages" ]; then
+  exit 0
+fi
+
+build_dir=""
+cleanup() {
+  if [ -n "$build_dir" ] && [ -d "$build_dir" ]; then
+    rm -rf -- "$build_dir"
+  fi
+}
+trap cleanup EXIT HUP INT TERM
+
+if ! command -v yay >/dev/null 2>&1; then
+  build_dir=$(mktemp -d)
+  git clone --depth 1 https://aur.archlinux.org/yay.git "$build_dir/yay"
+  (
+    cd "$build_dir/yay"
+    makepkg -si --noconfirm
+  )
+fi
+
+xargs -r yay -S --needed --noconfirm -- < "$aur_packages"

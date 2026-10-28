@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# tmux.conf: {{ include "dot_tmux.conf" | sha256sum }}
+
+set -eu
+
+tpm_installer={{ joinPath .chezmoi.homeDir ".tmux/plugins/tpm/bin/install_plugins" | quote }}
+
+if [ -x "$tpm_installer" ]; then
+  "$tpm_installer"
+fi

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# config.toml: {{ include ".chezmoitemplates/greetd/config.toml" | sha256sum }}
+# hyprland.conf: {{ include ".chezmoitemplates/greetd/hyprland.conf" | sha256sum }}
+# regreet.toml: {{ include ".chezmoitemplates/greetd/regreet.toml" | sha256sum }}
+
+set -eu
+
+source_dir={{ .chezmoi.sourceDir | quote }}
+greetd_source="$source_dir/.chezmoitemplates/greetd"
+
+for name in config.toml hyprland.conf regreet.toml; do
+  source_file="$greetd_source/$name"
+  target_file="/etc/greetd/$name"
+
+  if ! cmp -s "$source_file" "$target_file"; then
+    sudo install -Dm0644 "$source_file" "$target_file"
+  fi
+done
+
+if ! systemctl is-enabled --quiet greetd.service; then
+  sudo systemctl enable greetd.service
+fi
